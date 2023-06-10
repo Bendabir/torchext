@@ -2,7 +2,12 @@
     "configurations": [
         {
             "name": "Linux",
-            "includePath": ["/opt/libtorch-2.0/include"],
+            "includePath": [
+                "/usr/include/python3.11",
+                "/opt/pybind11-2.10/include/pybind11",
+                "/opt/libtorch-2.0/include",
+                "/opt/libtorch-2.0/include/torch/csrc/api/include"
+            ],
             "defines": [],
             "compilerPath": "/usr/local/cuda-11.7/bin/nvcc",
             "cppStandard": "c++11",
