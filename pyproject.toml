@@ -5,6 +5,7 @@ description = "Bootstrap for Torch CUDA extensions."
 readme = "README.md"
 authors = ["Benjamin RIVIERE <briviere01@gmail.com>"]
 repository = "https://github.com/bendabir/torchext"
+build = "build.py"
 
 [[tool.poetry.source]]
 name = "torch-cuda-11.7"
@@ -16,9 +17,22 @@ python =">=3.8, <3.12"
 torch = { version = ">=1.13.0, <2.1.0", source = "torch-cuda-11.7"}
 
 [tool.poetry.group.build.dependencies]
+setuptools = ">=64.0.0"
 ninja = "~=1.11.1"
 numpy = "~=1.24.0"
 torch = { version = "~=2.0.0", source = "torch-cuda-11.7"}
+
+[build-system]
+requires = [
+    "--extra-index-url",
+    "https://download.pytorch.org/whl/cu117",
+    "poetry-core>=1.0.0",
+    "setuptools>=64.0.0",
+    "ninja~=1.11.1",
+    "numpy~=1.24.0",
+    "torch~=2.0.0"
+]
+build-backend = "poetry.masonry.api"
 
 [tool.black]
 line-length = 88
