@@ -4,3 +4,7 @@ build
 dist
 *.egg-info
 *.o
+.env
+env
+venv
+.venv
