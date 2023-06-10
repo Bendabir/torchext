@@ -22,6 +22,9 @@ ninja = "~=1.11.1"
 numpy = "~=1.24.0"
 torch = { version = "~=2.0.0", source = "torch-cuda-11.7"}
 
+[tool.poetry.group.dev.dependencies]
+ipython = ">=8.0,<8.13"
+
 [build-system]
 requires = [
     "--extra-index-url",
