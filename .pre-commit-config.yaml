@@ -37,6 +37,7 @@ repos:
     rev: v1.4.0
     hooks:
       - id: detect-secrets
+        name: check for secrets
   # Check JSON format (with comments permitted)
   - repo: https://gitlab.com/bmares/check-json5
     rev: v1.0.0
@@ -65,3 +66,10 @@ repos:
     rev: 0.2.2
     hooks:
       - id: checkmake
+        name: checkmake
+  # Check that the different Poetry files are consistant
+  - repo: https://github.com/python-poetry/poetry
+    rev: 1.5.1
+    hooks:
+      - id: poetry-check
+      - id: poetry-lock
