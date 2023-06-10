@@ -20,6 +20,21 @@ torch = { version = ">=1.13.0, <2.1.0", source = "torch-cuda-11.7"}
 setuptools = ">=64.0.0"
 ninja = "~=1.11.1"
 numpy = "~=1.24.0"
+# NOTE : As PyTorch is not providing metadata, Poetry might need to download
+#        all the packages it finds until it find the good one, which can take
+#        a lot of time. It seems that the lock file helps and fix the issue.
+#        If the issue persists, we could think of a solution like the one below
+#        (i.e. listing all the wheels for each Python version and system).
+# torch = [
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp311-cp311-linux_x86_64.whl", python = "3.11", platform = "linux"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp311-cp311-win_amd64.whl", python = "3.11", platform = "win"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-linux_x86_64.whl", python = "3.10", platform = "linux"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-win_amd64.whl", python = "3.10", platform = "win"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp39-cp39-linux_x86_64.whl", python = "3.9", platform = "linux"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp39-cp39-win_amd64.whl", python = "3.9", platform = "win"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp38-cp38-linux_x86_64.whl", python = "3.8", platform = "linux"},
+#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp38-cp38-win_amd64.whl", python = "3.8", platform = "win"}
+# ]
 torch = { version = "~=2.0.0", source = "torch-cuda-11.7"}
 
 [tool.poetry.group.dev.dependencies]
