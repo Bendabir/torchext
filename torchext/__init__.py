@@ -1,1 +1,2 @@
-from ._C import *
+import torch
+from _libtorchext import *

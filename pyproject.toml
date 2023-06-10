@@ -5,7 +5,21 @@ description = "Bootstrap for Torch CUDA extensions."
 readme = "README.md"
 authors = ["Benjamin RIVIERE <briviere01@gmail.com>"]
 repository = "https://github.com/bendabir/torchext"
-build = "build.py"
+license = "GPL-3.0"
+include = [
+    { path = "py.typed" },
+    { path = "*.pyi" },
+    { path = "torchext/*.so", format = "wheel" },
+    { path = "torchext/csrc", format = "sdist" },
+]
+exclude = [
+    "tests",
+    "torchext/csrc",
+]
+
+[tool.poetry.build]
+script = "build.py"
+generate-setup-file = true
 
 [[tool.poetry.source]]
 name = "torch-cuda-11.7"
@@ -14,7 +28,7 @@ priority = "explicit" # Only looked up for packages using this source
 
 [tool.poetry.dependencies]
 python =">=3.8, <3.12"
-torch = { version = ">=1.13.0, <2.1.0", source = "torch-cuda-11.7"}
+torch = { version = ">=1.13.0, <2.1.0", source = "torch-cuda-11.7" }
 
 [tool.poetry.group.build.dependencies]
 setuptools = ">=64.0.0"
@@ -26,16 +40,16 @@ numpy = "~=1.24.0"
 #        If the issue persists, we could think of a solution like the one below
 #        (i.e. listing all the wheels for each Python version and system).
 # torch = [
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp311-cp311-linux_x86_64.whl", python = "3.11", platform = "linux"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp311-cp311-win_amd64.whl", python = "3.11", platform = "win"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-linux_x86_64.whl", python = "3.10", platform = "linux"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-win_amd64.whl", python = "3.10", platform = "win"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp39-cp39-linux_x86_64.whl", python = "3.9", platform = "linux"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp39-cp39-win_amd64.whl", python = "3.9", platform = "win"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp38-cp38-linux_x86_64.whl", python = "3.8", platform = "linux"},
-#     {url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp38-cp38-win_amd64.whl", python = "3.8", platform = "win"}
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp311-cp311-linux_x86_64.whl", python = "3.11", platform = "linux" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp311-cp311-win_amd64.whl", python = "3.11", platform = "win" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-linux_x86_64.whl", python = "3.10", platform = "linux" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-win_amd64.whl", python = "3.10", platform = "win" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp39-cp39-linux_x86_64.whl", python = "3.9", platform = "linux" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp39-cp39-win_amd64.whl", python = "3.9", platform = "win" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp38-cp38-linux_x86_64.whl", python = "3.8", platform = "linux" },
+#     { url = "https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp38-cp38-win_amd64.whl", python = "3.8", platform = "win" }
 # ]
-torch = { version = "~=2.0.0", source = "torch-cuda-11.7"}
+torch = { version = "~=2.0.0", source = "torch-cuda-11.7" }
 
 [tool.poetry.group.dev.dependencies]
 ipython = ">=8.0,<8.13"
@@ -136,6 +150,12 @@ exclude = [
 "__init__.py" = [
     "F401", # Unused import
     "F403", # Unable to detect undefined names
+]
+"build.py" = [
+    "D", # All documentation
+]
+"*.pyi" = [
+    "D", # All documentation
 ]
 
 [tool.ruff.isort]

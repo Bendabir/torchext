@@ -1,0 +1,3 @@
+import torch
+
+def do_nothing(tensor: torch.Tensor) -> torch.Tensor: ...
