@@ -2,9 +2,7 @@
     "configurations": [
         {
             "name": "Linux",
-            "includePath": [
-                "/opt/libtorch-2.0/include"
-            ],
+            "includePath": ["/opt/libtorch-2.0/include"],
             "defines": [],
             "compilerPath": "/usr/local/cuda-11.7/bin/nvcc",
             "cppStandard": "c++11",
