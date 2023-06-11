@@ -1,14 +1,18 @@
 {
+    "env": {
+        "pythonVersion": "3.11",
+        "cudaVersion": "11.7"
+    },
     "configurations": [
         {
             "name": "Linux",
             "includePath": [
-                "/usr/include/python3.11",
-                "/opt/libtorch-2.0/include",
-                "/opt/libtorch-2.0/include/torch/csrc/api/include"
+                "/usr/include/python${pythonVersion}",
+                "${workspaceFolder}/.env/lib/python${pythonVersion}/site-packages/torch/include",
+                "${workspaceFolder}/.env/lib/python${pythonVersion}/site-packages/torch/include/torch/csrc/api/include"
             ],
             "defines": [],
-            "compilerPath": "/usr/local/cuda-11.7/bin/nvcc",
+            "compilerPath": "/usr/local/cuda-${cudaVersion}/bin/nvcc",
             "cppStandard": "c++11",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.cpptools"
