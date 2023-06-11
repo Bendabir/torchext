@@ -4,7 +4,6 @@
             "name": "Linux",
             "includePath": [
                 "/usr/include/python3.11",
-                "/opt/pybind11-2.10/include/pybind11",
                 "/opt/libtorch-2.0/include",
                 "/opt/libtorch-2.0/include/torch/csrc/api/include"
             ],
